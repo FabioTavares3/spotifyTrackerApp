@@ -12,6 +12,11 @@ body {
   color: #fff; /* White text for readability */
 }
 
+.spotify-logo {
+  height: 32px;
+  vertical-align: middle;
+}
+
 /* General container for layout */
 .container {
   display: flex;
