@@ -1,0 +1,122 @@
+/* Basic reset for consistent styling across browsers */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General body styling */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #121212; /* Dark background for the app */
+  color: #fff; /* White text for readability */
+}
+
+/* General container for layout */
+.container {
+  display: flex;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 220px; /* Fixed width for the sidebar */
+  background-color: #1c1c1c; /* Slightly lighter dark background */
+  padding: 2rem 1rem; /* Padding for spacing */
+}
+
+.sidebar h2 {
+  color: #1db954; /* Spotify green for branding */
+  margin-bottom: 1rem;
+}
+
+.sidebar ul {
+  list-style: none; /* Remove default list styling */
+}
+
+.sidebar li {
+  margin: 1rem 0; /* Spacing between list items */
+}
+
+.sidebar a {
+  color: #fff; /* White text for links */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.2s; /* Smooth color transition on hover */
+}
+
+.sidebar a:hover {
+  color: #1db954; /* Highlight link with Spotify green */
+}
+
+/* Main content area styling */
+.content {
+  flex: 1; /* Take up remaining space */
+  padding: 2rem; /* Padding for spacing */
+}
+
+/* Header styling */
+header h1 {
+  font-size: 2rem; /* Large font size for main title */
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: #aaa; /* Lighter text for subtitle */
+  margin-bottom: 2rem;
+}
+
+/* Grid layout for music cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  ); /* Responsive grid */
+  gap: 2rem; /* Spacing between cards */
+}
+
+/* Individual music card styling */
+.card {
+  background-color: #1e1e1e; /* Dark background for cards */
+  border-radius: 10px; /* Rounded corners */
+  padding: 1rem; /* Padding inside the card */
+  transition: transform 0.2s ease; /* Smooth hover effect */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift card slightly on hover */
+}
+
+.card img {
+  width: 100%; /* Full width for images */
+  border-radius: 8px; /* Rounded corners for images */
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-size: 1.1rem; /* Slightly larger font for titles */
+  margin-bottom: 0.5rem;
+  color: #fff; /* White text for titles */
+}
+
+.card p {
+  font-size: 0.9rem; /* Smaller font for descriptions */
+  color: #ccc; /* Light gray text for descriptions */
+}
+
+.card a {
+  display: inline-block; /* Inline block for button styling */
+  margin-top: 1rem;
+  background-color: #1db954; /* Spotify green for buttons */
+  color: #000; /* Black text for contrast */
+  text-decoration: none; /* Remove underline */
+  padding: 0.5rem 1rem; /* Padding for button size */
+  border-radius: 20px; /* Rounded button */
+  font-weight: bold; /* Bold text for emphasis */
+  transition: background-color 0.2s; /* Smooth hover effect */
+}
+
+.card a:hover {
+  background-color: #18ac4d; /* Slightly darker green on hover */
+}
