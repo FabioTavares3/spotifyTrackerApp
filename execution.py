@@ -6,9 +6,14 @@ from spotipy.oauth2 import SpotifyOAuth
 import pandas as pd
 from datetime import datetime
 from Analysis_queries import top_artists,top_albums,top_tracks,listening_history
+from flask import Flask, render_template, jsonify
 
 
 
+app = Flask(__name__, static_folder='assets', template_folder='.')
+@app.route('/')
+def index():
+    return render_template('dashboard.html')
 
 load_dotenv()
 
@@ -181,6 +186,11 @@ class DBconnector:
             f_played_df = pd.DataFrame(f_played_data, index=[0])
             self.insert_data('f_played', f_played_df)
 
+    def bytes_to_str(self,df):
+        for col in df.columns:
+            if df[col].dtype == object:
+                df[col] = df[col].apply(lambda x: x.decode('utf-8') if isinstance(x, bytes) else x)
+        return df
 
     def is_song_stored(self,song_id: str,artist_id: str) -> bool:
         # Check if the song_id and artist_id already exist in the junction table
@@ -229,8 +239,34 @@ class DBconnector:
     
     def get_top_tracks_in_DB(self):
         return self.execute_query(top_tracks, (self.get_user_info['user_id'],))
+    
+@app.route('/api/top_artists')
+def top_artists_api():
+    conn = DBconnector()
+    data = conn.get_top_artists_in_DB()
+    return jsonify(data.to_dict(orient='records'))
+
+@app.route('/api/top_albums')
+def top_albums_api():
+    conn = DBconnector()
+    data = conn.get_top_albums_in_DB()
+    return jsonify(data.to_dict(orient='records'))
+
+@app.route('/api/top_tracks')
+def top_tracks_api():
+    conn = DBconnector()
+    data = conn.get_top_tracks_in_DB()
+    data = conn.bytes_to_str(data)
+    return jsonify(data.to_dict(orient='records'))
+
+@app.route('/api/listening_history')
+def listening_history_api():
+    conn = DBconnector()
+    data = conn.get_history_in_DB()
+    return jsonify(data.to_dict(orient='records'))
+
+
 
 
 if __name__ == "__main__":
-    conn = DBconnector()
-    conn.insert_records()
+    app.run(debug = True)
