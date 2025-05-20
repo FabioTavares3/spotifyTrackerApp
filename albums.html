@@ -22,8 +22,13 @@
           <ul>
             <li><a href="dashboard.html" id="home-btn">Início</a></li>
             <li><a href="tracks.html" id="tracks-btn">Músicas</a></li>
+            <li>
+              <a href="top_tracks.html" id="top-tracks-btn">Top Músicas</a>
+            </li>
             <li><a href="artists.html" id="artists-btn">Artistas</a></li>
-            <li><a href="albums.html" id="albums-btn">Álbuns</a></li>
+            <li>
+              <a href="albums.html" id="albums-btn" class="active">Álbuns</a>
+            </li>
             <li><a href="history.html" id="history-btn">Histórico</a></li>
           </ul>
         </nav>
@@ -33,6 +38,7 @@
           <h1>Seus Álbuns Mais Ouvidos</h1>
           <p>Veja abaixo seus álbuns mais ouvidos recentemente</p>
         </header>
+        <button class="toggle-view-btn" id="toggleViewBtn">Ver como Tabela</button>
         <section id="tracks" class="card-grid">
           <!-- Os cards serão inseridos via JS -->
         </section>

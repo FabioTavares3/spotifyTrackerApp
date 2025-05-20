@@ -8,19 +8,15 @@ document.addEventListener("DOMContentLoaded", () => {
     endpoint = "/api/top_albums";
   } else if (window.location.pathname.includes("history.html")) {
     endpoint = "/api/listening_history";
+  } else if (window.location.pathname.includes("top_tracks.html")) {
+    endpoint = "/api/top_tracks";
   } else {
     endpoint = "/api/top_tracks";
   }
 
   const section = document.getElementById("tracks");
-
-  // Cria botão de alternância
-  const toggleBtn = document.createElement("button");
-  toggleBtn.textContent = "Ver como Tabela";
-  toggleBtn.style.marginBottom = "1rem";
+  const toggleBtn = document.getElementById("toggleViewBtn");
   let showTable = false;
-  section.parentNode.insertBefore(toggleBtn, section);
-
   let lastData = [];
 
   // Busca e exibe os dados automaticamente ao carregar a página
@@ -31,13 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
       section.innerHTML = createCards(data);
     });
 
-  toggleBtn.addEventListener("click", () => {
-    showTable = !showTable;
-    toggleBtn.textContent = showTable ? "Ver como Cards" : "Ver como Tabela";
-    section.innerHTML = showTable
-      ? createTable(lastData)
-      : createCards(lastData);
-  });
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      showTable = !showTable;
+      toggleBtn.textContent = showTable ? "Ver como Cards" : "Ver como Tabela";
+      section.innerHTML = showTable
+        ? createTable(lastData)
+        : createCards(lastData);
+    });
+  }
 
   // Função para criar cards HTML a partir dos dados recebidos
   function createCards(data) {
