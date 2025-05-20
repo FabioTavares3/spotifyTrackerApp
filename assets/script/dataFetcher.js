@@ -1,33 +1,26 @@
 // Aguarda o carregamento completo do DOM antes de executar o script
 document.addEventListener("DOMContentLoaded", () => {
-  // Seleciona os botões e a seção onde os dados serão exibidos
-  const tracksBtn = document.getElementById("tracks-btn");
-  const artistsBtn = document.getElementById("artists-btn");
+  // Detecta a página e define o endpoint e o título
+  let endpoint = "";
+  if (window.location.pathname.includes("artists.html")) {
+    endpoint = "/api/top_artists";
+  } else if (window.location.pathname.includes("albums.html")) {
+    endpoint = "/api/top_albums";
+  } else if (window.location.pathname.includes("history.html")) {
+    endpoint = "/api/listening_history";
+  } else {
+    endpoint = "/api/top_tracks";
+  }
+
+  // Seleciona a seção onde os dados serão exibidos
   const section = document.getElementById("tracks");
 
-  // Evento para buscar e exibir as faixas mais ouvidas
-  tracksBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    // Faz uma requisição para a rota de top tracks
-    fetch("/api/top_tracks")
-      .then((res) => res.json())
-      .then((data) => {
-        // Atualiza a seção com a tabela gerada
-        section.innerHTML = createTable(data);
-      });
-  });
-
-  // Evento para buscar e exibir os artistas mais ouvidos
-  artistsBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    // Faz uma requisição para a rota de top artists
-    fetch("/api/top_artists")
-      .then((res) => res.json())
-      .then((data) => {
-        // Atualiza a seção com a tabela gerada
-        section.innerHTML = createTable(data);
-      });
-  });
+  // Busca e exibe os dados automaticamente ao carregar a página
+  fetch(endpoint)
+    .then((res) => res.json())
+    .then((data) => {
+      section.innerHTML = createTable(data);
+    });
 
   // Função para criar uma tabela HTML a partir dos dados recebidos
   function createTable(data) {

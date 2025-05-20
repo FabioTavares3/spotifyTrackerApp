@@ -1,23 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Spotify Albums</title>
+    <title>Seus Álbuns do Spotify</title>
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
     <div class="container">
       <aside class="sidebar">
-        <!-- ...sidebar content (copy from artists.html)... -->
+        <h2>
+          <a href="dashboard.html">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"
+              alt="Spotify"
+              class="spotify-logo"
+            />
+          </a>
+        </h2>
+        <nav>
+          <ul>
+            <li><a href="dashboard.html" id="home-btn">Início</a></li>
+            <li><a href="tracks.html" id="tracks-btn">Músicas</a></li>
+            <li><a href="artists.html" id="artists-btn">Artistas</a></li>
+            <li><a href="albums.html" id="albums-btn">Álbuns</a></li>
+            <li><a href="history.html" id="history-btn">Histórico</a></li>
+          </ul>
+        </nav>
       </aside>
       <main class="content">
         <header>
-          <h1>Your Top Albums</h1>
-          <p>See your most listened albums below</p>
+          <h1>Seus Álbuns Mais Ouvidos</h1>
+          <p>Veja abaixo seus álbuns mais ouvidos recentemente</p>
         </header>
-        <section id="albums" class="card-grid">
-          <!-- Cards will be inserted via JS -->
+        <section id="tracks" class="card-grid">
+          <!-- Os cards serão inseridos via JS -->
         </section>
       </main>
     </div>
