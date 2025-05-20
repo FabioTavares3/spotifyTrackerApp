@@ -1,78 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seu Spotify Tracker</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
-<body>
-  <div class="container">
-    <aside class="sidebar">
-  <h2><img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" alt="Spotify" class="spotify-logo" /></h2>
-      <nav>
-       <ul>
-        <li><a href="#" id="home-btn">Início</a></li>
-        <li><a href="#" id="tracks-btn">Músicas</a></li>
-        <li><a href="#" id="artists-btn">Artistas</a></li>
-        <li><a href="#" id="albums-btn">Álbuns</a></li>
-        <li><a href="#" id="history-btn">Histórico</a></li>
-      </ul>
-      </nav>
-    </aside>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seu Spotify Tracker</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h2>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"
+            alt="Spotify"
+            class="spotify-logo"
+          />
+        </h2>
+        <nav>
+          <ul>
+            <li><a href="#" id="home-btn">Início</a></li>
+            <li><a href="#" id="tracks-btn">Músicas</a></li>
+            <li><a href="#" id="artists-btn">Artistas</a></li>
+            <li><a href="#" id="albums-btn">Álbuns</a></li>
+            <li><a href="#" id="history-btn">Histórico</a></li>
+          </ul>
+        </nav>
+      </aside>
 
-    <main class="content">
-      <header>
-        <h1>Bem-vindo, ouvinte!</h1>
-        <p>Veja abaixo suas músicas mais tocadas recentemente</p>
-      </header>
+      <main class="content">
+        <header>
+          <h1>Bem-vindo, ouvinte!</h1>
+          <p>Veja abaixo suas músicas mais tocadas recentemente</p>
+        </header>
 
-      <section id="tracks" class="card-grid">
-        <!-- Os cards serão inseridos via JS -->
-      </section>
-    </main>
-  </div>
-  
-<script>
-document.getElementById("tracks-btn").addEventListener("click", function(e) {
-  e.preventDefault();
-  fetch('/api/top_tracks')
-    .then(response => response.json())
-    .then(data => {
-      const section = document.getElementById("tracks");
-      section.innerHTML = createTable(data);
-    });
-});
+        <section id="tracks" class="card-grid">
+          <!-- Os cards serão inseridos via JS -->
+        </section>
+      </main>
+    </div>
 
-document.getElementById("artists-btn").addEventListener("click", function(e) {
-  e.preventDefault();
-  fetch('/api/top_artists')
-    .then(response => response.json())
-    .then(data => {
-      const section = document.getElementById("tracks");
-      section.innerHTML = createTable(data);
-    });
-});
-
-function createTable(data) {
-  if (data.length === 0) return "<p>No data available</p>";
-
-  let html = "<table><tr>";
-  Object.keys(data[0]).forEach(key => html += `<th>${key}</th>`);
-  html += "</tr>";
-
-  data.forEach(row => {
-    html += "<tr>";
-    Object.values(row).forEach(value => html += `<td>${value}</td>`);
-    html += "</tr>";
-  });
-
-  html += "</table>";
-  return html;
-}
-</script>
-
-
-
-</body>
+    <script src="assets/script/dataFetcher.js"></script>
+  </body>
 </html>
