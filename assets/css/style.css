@@ -53,6 +53,16 @@ body {
   color: #1db954; /* Highlight link with Spotify green */
 }
 
+/* Sidebar active button highlight */
+.sidebar a.active {
+  color: #1db954 !important;
+  font-weight: bold;
+  background: rgba(29, 185, 84, 0.08);
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  transition: background 0.2s;
+}
+
 /* Main content area styling */
 .content {
   flex: 1; /* Take up remaining space */
@@ -78,6 +88,15 @@ header p {
     minmax(220px, 1fr)
   ); /* Responsive grid */
   gap: 2rem; /* Spacing between cards */
+}
+
+/* Ajuste para tabela encaixar perfeitamente na grid */
+.card-grid table {
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 /* Individual music card styling */
@@ -158,6 +177,23 @@ tr:last-child td {
 
 tr:hover td {
   background-color: #232323;
+}
+
+/* Botão de alternância de visualização */
+.toggle-view-btn {
+  background: #1db954;
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(29, 185, 84, 0.08);
+}
+.toggle-view-btn:hover {
+  background: #18ac4d;
 }
 
 /* Responsividade para telas menores */

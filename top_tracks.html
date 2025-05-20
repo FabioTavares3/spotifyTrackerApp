@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Músicas do Spotify</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h2>
+          <a href="dashboard.html">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"
+              alt="Spotify"
+              class="spotify-logo"
+            />
+          </a>
+        </h2>
+        <nav>
+          <ul>
+            <li><a href="dashboard.html" id="home-btn">Início</a></li>
+            <li><a href="tracks.html" id="tracks-btn">Músicas</a></li>
+            <li>
+              <a href="top_tracks.html" id="top-tracks-btn" class="active"
+                >Top Músicas</a
+              >
+            </li>
+            <li><a href="artists.html" id="artists-btn">Artistas</a></li>
+            <li><a href="albums.html" id="albums-btn">Álbuns</a></li>
+            <li><a href="history.html" id="history-btn">Histórico</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="content">
+        <header>
+          <h1>Top Músicas</h1>
+          <p>Veja abaixo suas músicas mais tocadas de todos os tempos</p>
+        </header>
+        <section id="tracks" class="card-grid">
+          <!-- Os cards ou tabela serão inseridos via JS -->
+        </section>
+      </main>
+    </div>
+    <script>
+      // Adiciona classe ativa ao botão Top Músicas na sidebar
+      document.addEventListener("DOMContentLoaded", function () {
+        var btn = document.getElementById("top-tracks-btn");
+        if (btn) btn.classList.add("active");
+      });
+    </script>
+    <script src="assets/script/dataFetcher.js"></script>
+  </body>
+</html>
