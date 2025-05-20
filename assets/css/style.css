@@ -159,3 +159,66 @@ tr:last-child td {
 tr:hover td {
   background-color: #232323;
 }
+
+/* Responsividade para telas menores */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sidebar h2 {
+    margin-bottom: 0;
+  }
+  .sidebar nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .sidebar li {
+    margin: 0;
+  }
+  .content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .sidebar nav ul {
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .sidebar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sidebar h2 {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .sidebar nav ul {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .sidebar {
+    padding: 0.5rem 0.2rem;
+  }
+  .content {
+    padding: 0.5rem;
+  }
+  header h1 {
+    font-size: 1.2rem;
+  }
+}
