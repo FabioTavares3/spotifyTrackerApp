@@ -120,12 +120,13 @@ class records_inserter:
             "user_name": self.get_user_info['user_name'],
             "email": self.get_user_info['email'],
             "country": self.get_user_info['country'],
-            "membership": self.get_user_info['membership']
+            "membership": self.get_user_info['membership'],
+            "user_image": self.get_user_info['user_image']
         }
         with self.connection.begin() as conn:
             conn.execute(text("""
-                INSERT IGNORE INTO d_user (user_id, user_name, email, country, membership)
-                VALUES (:user_id, :user_name, :email, :country, :membership)
+                INSERT IGNORE INTO d_user (user_id, user_name, email, country, membership, user_image)
+                VALUES (:user_id, :user_name, :email, :country, :membership, :user_image)
             """), d_user_data)
         print("d_user table updated successfully")
         

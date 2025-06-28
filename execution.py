@@ -9,7 +9,7 @@ if __name__ == "__main__":
     inserter.insert_records()
     # Start the HTTP server
     server = ServerHTTPClass.HTTPServer()
-    server.run()
+    #server.run()
 
     
 

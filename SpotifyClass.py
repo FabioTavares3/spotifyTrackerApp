@@ -1,6 +1,9 @@
 import os
 from spotipy.oauth2 import SpotifyOAuth
 import spotipy
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class SpotifyAPI:
     def authentication(self):
@@ -28,7 +31,8 @@ class SpotifyAPI:
             'user_name': user_name,
             'email': user_email,
             'country': user_country,
-            'membership': user_product
+            'membership': user_product,
+            'user_image': user_info['images'][0]['url'] if user_info['images'] else None
         }
         
 
